@@ -9,9 +9,15 @@ class Product extends Model
 {
     use SoftDeletes;
 
-    protected $table = 'Product';
+    protected $table = 'Products';
 
-    protected $fillable = ['Sku', 'name', 'description', 'price', 'amount', 'active', 'insert_in'];
+    protected $fillable = ['sku', 'name', 'description', 'price', 'amount', 'active', 'insert_in'];
 
     protected $dates = ['deleted_at'];
+
+    // Relation with Image
+    public function image()
+    {
+        return $this->hasOne('App\Models\Product\Imagem', 'product_id');
+    }
 }
