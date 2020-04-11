@@ -11,7 +11,12 @@
 |
 */
 
-Route::prefix('home')->group(function ()
+Route::prefix('admin')->group(function ()
 {
     Route::get('/dashboard',  'HomeController@index')->name('dashboard');
+
+    Route::resource('/produtos', 'ProductController');
+    Route::delete('/produtos/imagem/{id}/delete', "ProductController@deleteImage")->name('product_image_delete');
+
+    Route::get('/image/external', 'ImagesController@image')->name('image');
 });
