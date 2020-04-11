@@ -18,6 +18,7 @@
 
 #### Bibliotecas
 - Laravel Collective
+- Laracasts Flash
 
 #### Database
 - MySQL 5.7
@@ -28,6 +29,7 @@
 
 #### Backend
 - $ composer install  
+- $ php artisan storage:link
 
 ---
 
