@@ -8,6 +8,6 @@ class HomeController extends Controller
 {
     public function index()
    {
-        return view('home.home')->with('title', 'Home');
+        return view('admin.home.home')->with('title', 'Home');
    }
 }
