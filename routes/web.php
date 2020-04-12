@@ -13,11 +13,11 @@
 
 Route::prefix('admin')->group(function ()
 {
-    Route::get('/dashboard',  'HomeController@index')->name('dashboard');
+    Route::get('/dashboard',  'System\HomeController@index')->name('dashboard');
 
-    Route::resource('/produtos', 'ProductController');
-    Route::put('/produtos/baixa/{id}', 'ProductController@decrement')->name('product_decrement');
-    Route::delete('/produtos/imagem/{id}/delete', "ProductController@deleteImage")->name('product_image_delete');
+    Route::resource('/produtos', 'System\ProductController');
+    Route::put('/produtos/baixa/{id}', 'System\ProductController@decrement')->name('product_decrement');
+    Route::delete('/produtos/imagem/{id}/delete', "System\ProductController@deleteImage")->name('product_image_delete');
 
-    Route::get('/image/external', 'ImagesController@image')->name('image');
+    Route::get('/image/external', 'System\ImagesController@image')->name('image');
 });
