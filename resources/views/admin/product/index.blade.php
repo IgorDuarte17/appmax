@@ -83,10 +83,10 @@
                                         <td>
                                             R$ {{ $product->price }}
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <span class=" {{ ($product->amount < 100) ? 'badge badge-danger' : 'badge badge-success' }} "> {{ $product->amount }} </span>
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             @if($product->active)
                                                 <span class="badge badge-success">Ativo</span>
                                             @else
