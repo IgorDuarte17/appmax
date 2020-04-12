@@ -54,7 +54,7 @@
                                     <th scope="col">Quantidade</th>
                                     <th scope="col">Status</th>
                                     <th scope="col">Cadastrado Via</th>
-                                    <th scope="col">Ações</th>
+                                    <th scope="col" style="width:130px">Ações</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -84,7 +84,7 @@
                                             R$ {{ $product->price }}
                                         </td>
                                         <td>
-                                            {{ $product->amount }}
+                                            <span class=" {{ ($product->amount < 100) ? 'badge badge-danger' : 'badge badge-success' }} "> {{ $product->amount }} </span>
                                         </td>
                                         <td>
                                             @if($product->active)
@@ -97,6 +97,9 @@
                                             {{ $product->Insert_in = 1 ? 'Sistema' : 'API' }}
                                         </td>
                                         <td>
+                                            <a class="btn btn-success btn-sm btnDecrementItem" data-route="{{ route('product_decrement', $product->id) }}">
+                                                <i class="fa fa-arrow-down white"></i>
+                                            </a>
                                             <a href="{{ route('produtos.edit', $product->id) }}" class="btn btn-primary btn-sm">
                                                 <i class="fa fa-edit"></i>
                                             </a>
@@ -114,4 +117,77 @@
             </div>
         </div>
     </div>
+@endsection
+
+@section('scripts')
+    <script>
+        jQuery("body").on('click', '.btnDecrementItem', function(e) {
+            var self = jQuery(this);
+            var element = self.data('target-element');
+
+            swal({
+                title: 'Baixar este item?',
+                text: "Você está baixando sua quantidade em estoque!",
+                input: 'text',
+                inputAttributes: {
+                    autocapitalize: 'off',
+                    id: 'amount'
+                },
+                type: 'question',
+                showCancelButton: true,
+                confirmButtonColor: '#3085d6',
+                cancelButtonColor: '#d33',
+                confirmButtonText: 'Sim',
+                cancelButtonText: 'Cancelar',
+                showLoaderOnConfirm: true,
+                inputValidator: (value) => {
+                    if (!value) {
+                    return 'Informe a quantidade!'
+                    }
+                }
+            }).then((result) => {
+                if (result.value) {
+
+                    e.preventDefault();
+
+                    jQuery.ajax({
+                        headers: {
+                            'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
+                        },
+                        data: {
+                            _method: 'PUT'
+                        },
+                        url: self.data('route'),
+                        type: 'POST',
+                        dataType: 'json',
+
+                    }).done(function(data) {
+
+                        const toast = swal.mixin({
+                            toast: true,
+                            position: 'top-end',
+                            showConfirmButton: false,
+                            timer: 3000
+                        });
+
+                        toast({
+                            type: data.type,
+                            title: data.message
+                        });
+
+                        if(data.code == 200) {
+                            if(jQuery(element).length){
+                                jQuery(element).hide();
+                                self.hide();
+                            } else {
+                                self.parents('.card-box-images').hide();
+                                self.parents('tr').hide();
+                            }
+                        }
+                    });
+                }
+            });
+
+        });
+    </script>
 @endsection
