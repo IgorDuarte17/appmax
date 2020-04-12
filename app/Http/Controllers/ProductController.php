@@ -251,19 +251,18 @@ class ProductController extends Controller
      */
     public function decrement(Request $request, $id)
     {
-        // try
-        // {
+        try
+        {
             $data = $request->request->all();
             $product = Product::findOrFail($id);
-
-dd($request->amount);
-
 
             // Valida se existe a quantia solicitada em estoque
             if($request->amount > $product->amount)
             {
-                flash('Voce tentou dar baixa em mais produtos do que existem em estoque.')->warning()->important();
-                return redirect()->route('produtos.index');
+                return response()->json([
+                    'code' => 501,
+                    'message' => 'Voce tentou dar baixa em mais produtos do que existem em estoque.'
+                ]);
             }
 
             // Decrementa o valor requisitado do valor total
@@ -271,12 +270,15 @@ dd($request->amount);
 
             $product->update($data);
 
-            flash('Produto atualizado com sucesso.')->success()->important();
-            return redirect()->route('produtos.index');
-
-        // } catch (\Exception $e) {
-        //     flash('Ocorreu um erro ao tentar efetuar a baixa do produto.')->error()->important();
-        //     return redirect()->route('produtos.index');
-        // }
+            return response()->json([
+                'code' => 200,
+                'message' => 'Baixa do estoque realizada com sucesso!'
+            ]);
+        } catch (\Exception $e) {
+            return response()->json([
+                'code' => 501,
+                'message' => 'Ocorreu um erro ao tentar efetuar a baixa do produto.'
+            ]);
+        }
     }
 }

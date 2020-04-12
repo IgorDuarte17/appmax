@@ -133,6 +133,7 @@
                     autocapitalize: 'off',
                     id: 'amount'
                 },
+                inputPlaceholder: "Informe a quantidade",
                 type: 'question',
                 showCancelButton: true,
                 confirmButtonColor: '#3085d6',
@@ -155,7 +156,8 @@
                             'X-CSRF-TOKEN': jQuery('meta[name="csrf-token"]').attr('content')
                         },
                         data: {
-                            _method: 'PUT'
+                            _method: 'PUT',
+                            amount: result.value
                         },
                         url: self.data('route'),
                         type: 'POST',
@@ -177,11 +179,9 @@
 
                         if(data.code == 200) {
                             if(jQuery(element).length){
-                                jQuery(element).hide();
-                                self.hide();
+                                location.reload(true);
                             } else {
-                                self.parents('.card-box-images').hide();
-                                self.parents('tr').hide();
+                                location.reload(true);
                             }
                         }
                     });
