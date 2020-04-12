@@ -60,7 +60,7 @@
                             <tbody>
                                 @foreach($products as $product)
                                     <tr>
-                                        <td>
+                                        <td class="text-center">
                                             @if($product->image)
                                             <a data-toggle="tooltip" data-toggle="tooltip" data-html="true" title="<img src='{{ route('image',['link'=>$product->image->link]) }}' width='150' height='150' />">
                                                 <i class="fa fa-camera"></i>
@@ -93,8 +93,8 @@
                                                 <span class="badge badge-danger">Inativo</span>
                                             @endif
                                         </td>
-                                        <td>
-                                            {{ $product->Insert_in = 1 ? 'Sistema' : 'API' }}
+                                        <td class="text-center">
+                                            {{ $product->insert_in === 1 ? 'Sistema' : 'API' }}
                                         </td>
                                         <td>
                                             <a class="btn btn-success btn-sm btnDecrementItem" data-route="{{ route('product_decrement', $product->id) }}">
