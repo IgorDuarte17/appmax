@@ -111,8 +111,8 @@
                             <div class="row">
                                 <div class="col-md-6">
                                     <div class="form-group {{ $errors->has('image') ? ' has-error' : '' }}">
-                                        <label class="col-form-label" for="nome">
-                                            Foto
+                                        <label class="col-form-label" for="nome">Foto</label>
+                                            <br>
                                             @if($product->image)
                                                 <a id="foto" data-toggle="tooltip" data-toggle="tooltip" data-html="true" title="<img src='{{ route('image',['link'=>$product->image->link]) }}' width='150' height='150' />">
                                                     <i class="fa fa-camera"></i> Imagem atual
@@ -121,7 +121,7 @@
                                                     <i class="fa fa-remove"></i>
                                                 </a>
                                             @endif
-                                        </label>
+
                                         <div class="input-group">
                                             {{ Form::file('image', ['class' => 'filestyle', 'data-buttontext' => 'Selecionar Arquivo', 'data-buttonname' => 'btn-primary']) }}
                                         </div>

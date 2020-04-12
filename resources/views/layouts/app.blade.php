@@ -80,7 +80,6 @@
 
             <script>
                 jQuery("body").on('click', '.btnRemoveItem', function(e) {
-                    console.log('alo');
                     var self = jQuery(this);
                     var element = self.data('target-element');
 
