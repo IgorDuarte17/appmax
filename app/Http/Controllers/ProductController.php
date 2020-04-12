@@ -181,7 +181,7 @@ class ProductController extends Controller
             return redirect()->route('produtos.index');
 
         } catch (\Exception $e) {
-            flash('Ocorreu um erro ao atualizar o produto.')->success()->error();
+            flash('Ocorreu um erro ao atualizar o produto.')->error()->important();
             return redirect()->route('produtos.index');
         }
     }
@@ -240,5 +240,43 @@ class ProductController extends Controller
               'message' => $e->getMessage()
             ]);
         }
+    }
+
+    /**
+     * Update the amount value.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function decrement(Request $request, $id)
+    {
+        // try
+        // {
+            $data = $request->request->all();
+            $product = Product::findOrFail($id);
+
+dd($request->amount);
+
+
+            // Valida se existe a quantia solicitada em estoque
+            if($request->amount > $product->amount)
+            {
+                flash('Voce tentou dar baixa em mais produtos do que existem em estoque.')->warning()->important();
+                return redirect()->route('produtos.index');
+            }
+
+            // Decrementa o valor requisitado do valor total
+            $data['amount'] = $product->amount - $request->amount;
+
+            $product->update($data);
+
+            flash('Produto atualizado com sucesso.')->success()->important();
+            return redirect()->route('produtos.index');
+
+        // } catch (\Exception $e) {
+        //     flash('Ocorreu um erro ao tentar efetuar a baixa do produto.')->error()->important();
+        //     return redirect()->route('produtos.index');
+        // }
     }
 }
