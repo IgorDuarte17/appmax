@@ -16,3 +16,7 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/listar-produtos', 'API\ProductController@index');
+Route::post('/adicionar-produtos', 'API\ProductController@create');
+Route::put('/baixar-produtos/{id}', 'API\ProductController@decrement');
