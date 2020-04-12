@@ -10,6 +10,7 @@
 - Bootstrap
 - JavaScript
 - JQuery
+- SweetAlert 2
 - ElaAdmin Template
 
 #### Backend
