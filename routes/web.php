@@ -11,16 +11,26 @@
 |
 */
 
+Route::get('/', function () {
+    return \Redirect::to('admin/login');
+});
+
 Route::prefix('admin')->group(function ()
 {
-    Route::get('/dashboard',  'System\HomeController@index')->name('dashboard');
+    Auth::routes();
 
-    Route::resource('/produtos', 'System\ProductController');
-    Route::put('/produtos/baixa/{id}', 'System\ProductController@decrement')->name('product_decrement');
-    Route::delete('/produtos/imagem/{id}/delete', "System\ProductController@deleteImage")->name('product_image_delete');
+    Route::middleware(['after' => 'auth'])->group(function () {
 
-    Route::get('/relatorio-diario',  'System\ReportController@byDay')->name('daily_report');
-    Route::get('/relatorio-estoque',  'System\ReportController@stock')->name('stock_report');
+        Route::get('/dashboard',  'System\HomeController@index')->name('dashboard');
 
-    Route::get('/image/external', 'System\ImagesController@image')->name('image');
+        Route::resource('/produtos', 'System\ProductController');
+        Route::put('/produtos/baixa/{id}', 'System\ProductController@decrement')->name('product_decrement');
+        Route::delete('/produtos/imagem/{id}/delete', "System\ProductController@deleteImage")->name('product_image_delete');
+
+        Route::get('/relatorio-diario',  'System\ReportController@byDay')->name('daily_report');
+        Route::get('/relatorio-estoque',  'System\ReportController@stock')->name('stock_report');
+
+        Route::get('/image/external', 'System\ImagesController@image')->name('image');
+
+    });
 });

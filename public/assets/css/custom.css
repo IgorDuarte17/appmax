@@ -95,3 +95,8 @@
 .icon-span-filestyle {
     padding-right: 5px;
 }
+
+/* Login Background */
+.bg-light-gray{
+    background-color: #D3D3D3;
+}

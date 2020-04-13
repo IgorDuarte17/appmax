@@ -23,6 +23,7 @@
 
         <link rel="stylesheet" href="{{ asset('assets/css/cs-skin-elastic.css') }}">
         <link rel="stylesheet" href="{{ asset('assets/css/style.css') }}">
+        <link rel="stylesheet" href="{{ asset('assets/css/custom.css') }}">
 
         <!-- <script type="text/javascript" src="https://cdn.jsdelivr.net/html5shiv/3.7.3/html5shiv.min.js"></script> -->
         <link href="https://cdn.jsdelivr.net/npm/chartist@0.11.0/dist/chartist.min.css" rel="stylesheet">
@@ -32,7 +33,7 @@
         <link href="https://cdn.jsdelivr.net/npm/fullcalendar@3.9.0/dist/fullcalendar.min.css" rel="stylesheet" />
     </head>
 
-    <body class="bg-dark">
+    <body class="bg-light-gray">
         <div class="sufee-login d-flex align-content-center flex-wrap">
             <!-- Content -->
             <div class="container">

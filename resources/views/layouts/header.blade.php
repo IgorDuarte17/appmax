@@ -8,7 +8,7 @@
         <div class="header-menu">
             <div class="header-left">
                 <button class="search-trigger"><i class="fa fa-user"></i></button>
-                Igor Santos
+                {{ Auth::user()->name }}
             </div>
 
             <div class="user-area dropdown float-right">
