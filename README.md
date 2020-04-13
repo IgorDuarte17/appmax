@@ -3,6 +3,7 @@
 > Micro Sistema para Controle de Estoque [Teste Desenvolvedor Full Stack - Appmax]
 
 ### Sobre o sistema
+- Sistem de Autenticação por Login
 - Dashboard com Métricas
 - Gerenciamento de Produtos
 - Relatório do Dia
@@ -35,6 +36,9 @@
 ---
 
 ### Instalação
+#### Usuário
+- Email: admin@admin.com
+- Senha: 12345
 
 #### Pré Requisitos
 - $ cp .env.example .env
