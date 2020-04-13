@@ -1,7 +1,7 @@
 <header id="header" class="header">
     <div class="top-left">
         <div class="navbar-header">
-            <a class="navbar-brand" href="./"><img src="../images/logo-appmax.png" alt="Logo"></a>
+            <a class="navbar-brand" href="./"><img src="/images/logo-appmax.png" alt="Logo"></a>
         </div>
     </div>
     <div class="top-right">
