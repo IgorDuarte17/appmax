@@ -15,7 +15,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">{{ $countAllWithActive }}</span></div>
+                                    <div class="stat-text"><span class="count">{{ $gettAllWithActive->count() }}</span></div>
                                     <div class="stat-heading">Quantidade de Produtos Ativos</div>
                                 </div>
                             </div>
@@ -33,7 +33,7 @@
                             </div>
                             <div class="stat-content">
                                 <div class="text-left dib">
-                                    <div class="stat-text"><span class="count">{{ $countAllWithLowStock }}</span></div>
+                                    <div class="stat-text"><span class="count">{{ $getAllWithLowStock->count() }}</span></div>
                                     <div class="stat-heading">Quantidade de Produtos com Estoque abaixo de 100</div>
                                 </div>
                             </div>

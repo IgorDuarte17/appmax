@@ -17,10 +17,10 @@ class HomeController extends Controller
 
     public function index()
     {
-        $countAllWithActive = $this->productQuery->countAllWithActive();
-        $countAllWithLowStock = $this->productQuery->countAllWithLowStock();
+        $gettAllWithActive = $this->productQuery->gettAllWithActive();
+        $getAllWithLowStock = $this->productQuery->getAllWithLowStock();
         $getLastFiveProducts = $this->productQuery->getLastFiveProducts();
 
-        return view('admin.home.home', compact('countAllWithActive', 'countAllWithLowStock', 'getLastFiveProducts'))->with('title', 'Home');
+        return view('admin.home.dashboard', compact('gettAllWithActive', 'getAllWithLowStock', 'getLastFiveProducts'))->with('title', 'Home');
     }
 }
