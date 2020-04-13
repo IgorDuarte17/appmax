@@ -1,7 +1,15 @@
 ## Appmax - Inventory Control
 
-> Micro Sistema para Controle de Estoque [Teste Desenvolvedor Full Stack Appmax]
+> Micro Sistema para Controle de Estoque [Teste Desenvolvedor Full Stack - Appmax]
 
+### Sobre o sistema
+- Dashboard com Métricas
+- Gerenciamento de Produtos
+- Relatório do Dia
+- Relatório de Estoque
+- API para Listar, Cadastrar e Atualizar Estoque
+
+---
 
 ### Tecnologias utilizadas: 
 #### Frontend
@@ -21,18 +29,27 @@
 - Laravel Collective
 - Laracasts Flash
 
-#### Database
+#### Banco de Dados
 - MySQL 5.7
 
 ---
 
 ### Instalação
 
+#### Pré Requisitos
+- $ cp .env.example .env
+- create local database
+
 #### Backend
 - $ composer install  
+- $ php artisan key:generate
 - $ php artisan storage:link
+
+#### Banco de Dados
+- $ php artisan migrate
+- $ php artisan db:seed
 
 ---
 
-### Reponsáveis
+### Maintainer
 Igor Santos – igors.d@hotmail.com
